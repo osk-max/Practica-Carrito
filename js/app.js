@@ -5,52 +5,5 @@ const contenedorCarrito = document.querySelector('#lista-carrito tbody');
 const listaCursos = document.querySelector("#lista-cursos");
 let articulosCarrito = [];
 
-// Eventos 
-escuchaEventos();
-
-function escuchaEventos() {
-  listaCursos.addEventListener('click', infoCursos);
-}
-
-// Funciones
-// LLegar a la informacion carrito
-function infoCursos(e) {
-  e.preventDefault();
-  if(e.target.classList.contains('agregar-carrito')) {
-    const infoBtnCarrito = e.target.parentElement.parentElement;
-    obtenerInfoCarrito(infoBtnCarrito);
-  }
-}
-
-// Obtener informacion carrito
-function obtenerInfoCarrito(curso) {
-  const infoCurso = {
-    imagen: curso.querySelector('img').src,
-    titulo: curso.querySelector('h4').innerText,
-    precio: curso.querySelector('.precio span').innerText,
-    id: curso.querySelector('a').getAttribute('data-id'),
-    cantidad: 1
-  };
-
-  // Agregar elementos al arreglo carrito
-  articulosCarrito = [...articulosCarrito, infoCurso];
-  console.log(articulosCarrito);
-  carritoHtml();
-}
-
-// Muestra los articulos de compras en el html
-function carritoHtml() {
-  articulosCarrito.forEach(curso => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>
-      ${curso.titulo}
-      
-      </td>    
-    `;
-    // Agregar el html al carrito en tbody
-    contenedorCarrito.appendChild(row);
-  })  
-}
 
 
