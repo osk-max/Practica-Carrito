@@ -9,38 +9,31 @@ let articulosCarrito = [];
 cargarEventListener();
 
 function cargarEventListener() {
-  listaCursos.addEventListener('click', agregarCursos);
+  listaCursos.addEventListener('click', infoCurso)
 
-};
+}
 
 // FUNCIONES
-function agregarCursos(e) {
+function infoCurso(e) {
   e.preventDefault();
-  if(e.target.classList.contains('agregar-carrito')) {
-    const cursoSeleccionado = e.target.parentElement.parentElement;
-    leerDatosCurso(cursoSeleccionado);
+  if(e.target.classList.contains('agregar-carrito')) {    
+    const infoObtenidaCurso = e.target.parentElement.parentElement;    
+    obtenerInfoCurso(infoObtenidaCurso);
   }
-};
+}
 
-// Extraer informacion del curso
-function leerDatosCurso(curso) {
-  // Objeto contenido curso actual
-  const infoCurso = {
+function obtenerInfoCurso(curso) {
+  // Objeto informacion curso
+  const infoCursoActual = {
     imagen: curso.querySelector('img').src,
-    titulo: curso.querySelector('h4').innerText,
+    nombre: curso.querySelector('h4').innerText,
     precio: curso.querySelector('.precio span').innerText,
     id: curso.querySelector('a').getAttribute('data-id'),
     cantidad: 1
-  };
+  }
+  impresionHtml(infoCursoActual);
+}
 
-  // Agregar elemento al arreglo carrito
-  articulosCarrito = [...articulosCarrito, infoCurso ];
-  console.log(articulosCarrito)
-  carritoHtml();
-};
-
-// Muestra los articulos de compras en el html
-function carritoHtml() {
-  
+function impresionHtml(curso) {
   
 }
